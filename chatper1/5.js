@@ -125,5 +125,40 @@
 // console.log(varA ?? varB);
 // console.log(varC ?? varB);
 
-let name;
-let nickname = "winterlood";
+// let name;
+// let nickname = "winterlood";
+// let user = name ?? nickname;
+
+// console.log(user);
+
+// let name = "이정환";
+// let nickname = "winterlood";
+
+// let user = name ?? nickname;
+
+// console.log(user);
+
+// let varA = 1;
+// varA = '이정환';
+
+// console.log(++varA);
+
+// let varA = 1;
+// varA = '이정환';
+
+// console.log(typeof varA);
+
+// const varA = "안녕하세요";
+
+// typeof varA === "string" 
+//     ? console.log("문자 자료형")
+//     : console.log("문자 자료형 아님");
+
+// let num = 1;
+
+// num % 2 === 0 ? console.log("짝수") : console.log("홀수");
+
+let num = 1;
+let result = num % 2 === 0 ? "짝수" : "홀수";
+
+console.log(result);
