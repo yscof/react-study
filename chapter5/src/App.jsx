@@ -1,10 +1,17 @@
 import "./App.css";
 import Header from "./component/Header";
+import Body from "./component/Body";
+import Footer from "./component/Footer";
 
 function App() {
-  return <div className="App">
+  const name = "이정환";
+  return (
+  <div className="App">
     <Header />
-  </div>;
+    <Body name={name} location={"부천시"} />
+    <Footer />
+  </div>
+  );
 }
 
 export default App;

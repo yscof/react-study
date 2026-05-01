@@ -1,7 +1,8 @@
-function Body() {
+function Body({ name, location }) {
+    console.log(name, location);
     return (
-        <div>
-            <h1>body</h1>
+        <div className="body">
+            {name}은 {location}에 거주합니다
         </div>
     );
 }
