@@ -1,10 +1,6 @@
-function Body({ name, location }) {
-    console.log(name, location);
-    return (
-        <div className="body">
-            {name}은 {location}에 거주합니다
-        </div>
-    );
+function Body({ children }) {
+    console.log(children);
+    return <div className="body">{children}</div>;
 }
 
 export default Body;
