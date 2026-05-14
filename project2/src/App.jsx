@@ -47,7 +47,7 @@ function App() {
     );
   };
   const onDelete = (targetId) => {
-    setTodo(todo.filter((it) => {it.id !== targetId}));
+    setTodo(todo.filter((it) => it.id !== targetId));
   };
 
   return (
