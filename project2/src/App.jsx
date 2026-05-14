@@ -42,7 +42,7 @@ function App() {
   const onUpdate = (targetId) => {
     setTodo(
       todo.map((it) => 
-        it.id === targeId ? {...it, isDone: !it.isDone} : it
+        it.id === targetId ? {...it, isDone: !it.isDone} : it
       )
     );
   };
