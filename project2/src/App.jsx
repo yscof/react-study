@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useReducer, useRef } from "react";
 import './App.css';
 import Header from "./component/Header.jsx";
 import TodoEditor from "./component/TodoEditor.jsx";
@@ -26,29 +26,25 @@ const mockTodo = [
   },
 ];
 
+function reducer(state, action) {
+  // 상태 변화 코드
+  return state;
+}
+
 function App() {
   const idRef = useRef(3);
-  const [todo, setTodo] = useState(mockTodo);
+  const [todo, dispatch] = useReducer(reducer, mockTodo);
 
   const onCreate = (content) => {
-    const newItem = {
-      id: idRef.current,
-      content,
-      isDone: false,
-      createDate: new Date().getTime(),
-    };
-    setTodo([newItem, ...todo]);
     idRef.current += 1;
   };
+
   const onUpdate = (targetId) => {
-    setTodo(
-      todo.map((it) => 
-        it.id === targetId ? {...it, isDone: !it.isDone} : it
-      )
-    );
+
   };
+
   const onDelete = (targetId) => {
-    setTodo(todo.filter((it) => it.id !== targetId));
+    
   };
 
   return (
