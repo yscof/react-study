@@ -28,8 +28,19 @@ const mockTodo = [
 
 function reducer(state, action) {
   switch (action.type) {
-    case "CREATE":
+    case "CREATE": {
       return [action.newItem, ...state];
+    }
+    case "UPDATE": {
+      return state.map((it) =>
+        it.id === action.targetId 
+          ? {
+              ...it,
+              isDone: !it.isDone,
+            }
+          : it
+      );
+    }
     default:
       return state;
   }
@@ -54,7 +65,10 @@ function App() {
   };
 
   const onUpdate = (targetId) => {
-
+    dispatch({
+      type: "UPDATE",
+      targetId,
+    });
   };
 
   const onDelete = (targetId) => {
