@@ -27,7 +27,12 @@ const mockTodo = [
 ];
 
 function reducer(state, action) {
-  // 상태 변화 코드
+  switch (action.type) {
+    case "CREATE":
+      return [action.newItem, ...state];
+    default:
+      return state;
+  }
   return state;
 }
 
@@ -36,6 +41,15 @@ function App() {
   const [todo, dispatch] = useReducer(reducer, mockTodo);
 
   const onCreate = (content) => {
+    dispatch({
+      type: "CREATE",
+      newItem: {
+        id: idRef.current,
+        content,
+        isDone: false,
+        createdDate: new Date().getTime(),
+      },
+    });
     idRef.current += 1;
   };
 
