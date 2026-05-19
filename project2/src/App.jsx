@@ -1,9 +1,11 @@
-import { useReducer, useRef } from "react";
+import React, { useCallback, useReducer, useRef } from "react";
 import './App.css';
 import Header from "./component/Header.jsx";
 import TodoEditor from "./component/TodoEditor.jsx";
 import TodoList from "./component/TodoList.jsx";
 // import TestComp from "./component/TestComp";
+
+export const TodoContext = React.createContext();
 
 const mockTodo = [
   {
@@ -67,26 +69,28 @@ function App() {
     idRef.current += 1;
   };
 
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     dispatch({
       type: "UPDATE",
       targetId,
     });
-  };
+  }, []);
+  
 
-  const onDelete = (targetId) => {
+  const onDelete = useCallback((targetId) => {
     dispatch({
       type: "DELETE",
       targetId,
     });
-  };
+  }, []);
 
   return (
     <div className="App">
-      {/* <TestComp /> */}
       <Header />
-      <TodoEditor onCreate={onCreate} />
-      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
+      <TodoContext.Provider value={{ todo, onCreate, onUpdate, onDelete }}>
+        <TodoEditor />
+        <TodoList />
+      </TodoContext.Provider>
     </div>
   );
 }
